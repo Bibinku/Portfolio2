@@ -18,7 +18,7 @@ export default function About() {
                 <strong>Based in</strong> — {personalInfo.location}
               </div>
               <div>
-                <strong>Looking for</strong> —Software Developer Intern & &amp;  Entry-Level Developer Roles
+                <strong>Looking for</strong> —Software Developer Intern &amp;  Entry-Level Developer Roles
               </div>
             </div>
           </Reveal>
