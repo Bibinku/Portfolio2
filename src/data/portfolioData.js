@@ -15,6 +15,9 @@ export const personalInfo = {
   phone: '+91 8078164113',
   linkedin: 'https://www.linkedin.com/in/bibin-k-u-2859852b4',
   github: 'https://github.com/Bibinku',
+  // Drop your CV at public/assets/Bibin_KU_CV.pdf (served from /assets/Bibin_KU_CV.pdf).
+  cvUrl: '/assets/Bibin_KU_CV.pdf',
+  cvFileName: 'Bibin_KU_CV.pdf',
   tagline: 'I build practical web applications using Python, Django, JavaScript, and modern web technologies.',
   summary:
     'Software Developer Intern with hands-on experience in Python, Django, HTML, CSS, JavaScript, and MySQL. Looking to build real-world applications, contribute to a development team, and grow as a Full Stack Developer.',

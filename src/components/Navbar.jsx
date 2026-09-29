@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '../data/portfolioData'
+import DownloadCvButton from './DownloadCvButton'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -31,9 +32,7 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-cta">
-          <a href="#contact" className="btn btn-primary btn-sm">
-            Let's talk
-          </a>
+          <DownloadCvButton className="btn-sm" />
           <button
             type="button"
             className="nav-toggle"
@@ -53,9 +52,7 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
-        <a href="#contact" className="btn btn-primary" onClick={handleLinkClick}>
-          Let's talk
-        </a>
+        <DownloadCvButton onClick={handleLinkClick} />
       </div>
     </header>
   )
