@@ -3,18 +3,17 @@ import { Home, User, Code, Briefcase, FolderKanban, Mail } from 'lucide-react'
 import { navLinks } from '../data/portfolioData'
 
 const MOBILE_QUERY = '(max-width: 768px)'
-const SCROLL_IDLE_MS = 200 // show again after scrolling has stopped this long
+const SCROLL_IDLE_MS = 200
 
 const iconByHref = {
   '#home': Home,
   '#about': User,
-   '#skills': Code,
+  '#skills': Code,
   '#experience': Briefcase,
   '#projects': FolderKanban,
   '#contact': Mail,
 }
 
-/** Hide while the page is scrolling, show again once it has been idle for SCROLL_IDLE_MS. */
 function useHideWhileScrolling(navRef) {
   const [hidden, setHidden] = useState(false)
   const hiddenRef = useRef(false)
@@ -26,13 +25,12 @@ function useHideWhileScrolling(navRef) {
     const update = (value) => {
       if (hiddenRef.current !== value) {
         hiddenRef.current = value
-        setHidden(value) // only re-render when the value actually flips
+        setHidden(value)
       }
     }
 
     const onScroll = () => {
       if (!mq.matches) return
-      // Keyboard users focused inside the nav must not lose it mid-scroll.
       const nav = navRef.current
       if (nav && nav.contains(document.activeElement) && document.activeElement.matches(':focus-visible')) return
 
@@ -66,7 +64,6 @@ function useHideWhileScrolling(navRef) {
   return [hidden, show]
 }
 
-/** Tracks which section sits around the middle of the viewport. */
 function useActiveSection(ids) {
   const [active, setActive] = useState(ids[0])
 
@@ -75,7 +72,6 @@ function useActiveSection(ids) {
     const elements = ids.map((id) => document.getElementById(id)).filter(Boolean)
     if (!elements.length) return undefined
 
-    // Thin band just above the viewport middle: the section crossing it is "current".
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -104,7 +100,6 @@ export default function MobileBottomNav() {
       ref={navRef}
       className={`bottom-nav ${hidden ? 'is-hidden' : ''}`}
       aria-label="Section navigation"
-      // Tabbing into the bar with a keyboard always reveals it.
       onFocus={(event) => {
         if (event.target.matches(':focus-visible')) show()
       }}
@@ -119,10 +114,11 @@ export default function MobileBottomNav() {
               <a
                 href={link.href}
                 className={`bottom-nav-link ${isActive ? 'is-active' : ''}`}
+                aria-label={link.label}
+                title={link.label}
                 aria-current={isActive ? 'location' : undefined}
               >
-                {Icon && <Icon size={18} aria-hidden="true" />}
-                <span>{link.label}</span>
+                {Icon && <Icon size={22} aria-hidden="true" />}
               </a>
             </li>
           )
