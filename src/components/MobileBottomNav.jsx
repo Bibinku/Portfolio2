@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Home, User, Wrench, Briefcase, FolderKanban, Mail } from 'lucide-react'
+import { Home, User, Code, Briefcase, FolderKanban, Mail } from 'lucide-react'
 import { navLinks } from '../data/portfolioData'
 
 const MOBILE_QUERY = '(max-width: 768px)'
@@ -8,7 +8,7 @@ const SCROLL_IDLE_MS = 200 // show again after scrolling has stopped this long
 const iconByHref = {
   '#home': Home,
   '#about': User,
-  '#skills': Wrench,
+   '#skills': Code,
   '#experience': Briefcase,
   '#projects': FolderKanban,
   '#contact': Mail,
