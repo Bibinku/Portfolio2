@@ -1166,7 +1166,6 @@ footer.site-footer {
 /* Hidden everywhere except phones. */
 .bottom-nav {
   display: none;
-  
 }
 
 @media (max-width: 768px) {
@@ -1190,7 +1189,7 @@ footer.site-footer {
     max-width: 480px;
     margin: 0 auto;
     z-index: 110;
-    padding: 4px;
+    padding: 6px;
     background: rgba(255, 255, 255, 0.92);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
@@ -1228,8 +1227,7 @@ footer.site-footer {
     justify-content: center;
     gap: 3px;
     min-width: 44px;
-    min-height: 44px; /* tap target >= 44px */
-    padding: 4px 2px;
+    min-height: 48px; /* tap target >= 44px */
     padding: 6px 2px;
     border-radius: 999px;
     font-size: 10.5px;
@@ -1252,6 +1250,6 @@ footer.site-footer {
 
   /* Keep the last content clear of the floating bar. */
   footer.site-footer {
-     padding-bottom: calc(40px + 84px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(40px + 96px + env(safe-area-inset-bottom, 0px));
   }
 }
