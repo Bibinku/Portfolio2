@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Home, User, Code, Briefcase, FolderKanban, Mail } from 'lucide-react'
+import { Home, User, Code, Briefcase, FolderKanban } from 'lucide-react'
 import { navLinks } from '../data/portfolioData'
 
 const MOBILE_QUERY = '(max-width: 768px)'
@@ -11,7 +11,6 @@ const iconByHref = {
   '#skills': Code,
   '#experience': Briefcase,
   '#projects': FolderKanban,
-  '#contact': Mail,
 }
 
 function useHideWhileScrolling(navRef) {
@@ -88,7 +87,9 @@ function useActiveSection(ids) {
   return active
 }
 
-const sectionIds = navLinks.map((link) => link.href.slice(1))
+// Bottom bar shows only these 5 (Contact is left out on purpose).
+const bottomLinks = navLinks.filter((link) => link.href !== '#contact')
+const sectionIds = bottomLinks.map((link) => link.href.slice(1))
 
 export default function MobileBottomNav() {
   const navRef = useRef(null)
@@ -105,7 +106,7 @@ export default function MobileBottomNav() {
       }}
     >
       <ul className="bottom-nav-list">
-        {navLinks.map((link) => {
+        {bottomLinks.map((link) => {
           const id = link.href.slice(1)
           const Icon = iconByHref[link.href]
           const isActive = active === id
@@ -114,11 +115,10 @@ export default function MobileBottomNav() {
               <a
                 href={link.href}
                 className={`bottom-nav-link ${isActive ? 'is-active' : ''}`}
-                aria-label={link.label}
-                title={link.label}
                 aria-current={isActive ? 'location' : undefined}
               >
-                {Icon && <Icon size={22} aria-hidden="true" />}
+                {Icon && <Icon size={21} aria-hidden="true" />}
+                <span>{link.label}</span>
               </a>
             </li>
           )
